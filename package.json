@@ -1,0 +1,27 @@
+{
+  "name": "nodelang",
+  "version": "1.0.0",
+  "description": "Full NodeJS API Reference ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericmoore123/Nodelang.git"
+  },
+  "keywords": [
+    "Node",
+    "NodeJS",
+    "JavaScript"
+  ],
+  "author": "Eric Moore",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ericmoore123/Nodelang/issues"
+  },
+  "homepage": "https://github.com/ericmoore123/Nodelang#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
