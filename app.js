@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
+const expressHbs = require('express-handlebars');
+
 
 // Gets project rootDirectory (Removes need for "__dirname")
 const rootDir = require('./helpers/path');
@@ -11,14 +13,14 @@ const rootDir = require('./helpers/path');
 const adminRouter = require('./routes/admin');
 const shopRouter = require('./routes/shop');
 
+// Initialize handlebars engine
+app.engine('handlebars', expressHbs.engine());
+app.set('view engine', 'handlebars');
+app.set('views', 'views');
+
 const PORT = process.env.PORT || 8080;
 
 app.use(bodyParser.urlencoded({ extended: false }));
-
-app.use("/", (req, res, next) => {
-    console.log('Page loaded successfuly...');
-    next();
-});
 
 // Enable use of custom router routes
 app.use('/admin', adminRouter.router);
@@ -29,7 +31,10 @@ app.use(express.static(path.join(rootDir, 'public')));
 
 // 404 Page fallback handler
 app.use((req, res, next) => {
-    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+    // res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+    const errCode = 404;
+    console.error('Page not found:', errCode);
+    res.status(404).render('404', { pageTitle: 'Page Not Found' });
 });
 
 app.listen(PORT, () => {
