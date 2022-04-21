@@ -16,12 +16,12 @@ const PORT = process.env.PORT || 8080;
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/", (req, res, next) => {
-    console.log('Site loaded successfuly...');
+    console.log('Page loaded successfuly...');
     next();
 });
 
 // Enable use of custom router routes
-app.use('/admin', adminRouter);
+app.use('/admin', adminRouter.router);
 app.use('/', shopRouter);
 
 // Add styles

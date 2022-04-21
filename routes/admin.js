@@ -6,15 +6,17 @@ const path = require('path');
 
 const rootDir = require('../helpers/path');
 
+const products = [];
+
 // /admin - routes
 router.get('/add-product', (req, res, next) => {
     res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
  });
 
- router.post("/product", (req, res, next) => {
-    let passedData = req.body;
-    console.log(passedData);
+ router.post("/add-product", (req, res, next) => {
+    products.push({title: req.body.title});
     res.redirect('/'); // Auto rediredt page to url on req
  });
 
-module.exports = router;
+exports.router = router;
+exports.products = products;
