@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 
 const adminRouter = require('./routes/admin');
+const shopRouter = require('./routes/shop');
 
 const PORT = process.env.PORT || 8080;
 
@@ -13,27 +14,13 @@ app.use("/", (req, res, next) => {
     next();
 });
 
+// Enable use of custom router routes
 app.use(adminRouter);
+app.use(shopRouter);
 
-app.use('/add-product', (req, res, next) => {
-    res.send(`
-        <form action="/product" method="post">
-            <input type="text" name="title" placeholder="name"><br>
-            <input type="text" name="type" placeholder="book type"><br>
-            <button type="submit">Submit</button>
-        </form>`
-    ); 
- });
-
- app.post("/product", (req, res, next) => {
-    let passedData = req.body;
-    console.log(passedData);
-    res.redirect('/'); // Auto rediredt page to url on req
- });
-
-//  Fallback middleware
-app.use('/', (req, res, next) => {
-    res.send("<h2>Base route</h2>");
+// 404 Page fallback handler
+app.use((req, res, next) => {
+    res.status(404).send("<h1>404 Page not found...</h1>");
 });
 
 app.listen(PORT, () => {

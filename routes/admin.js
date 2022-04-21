@@ -1,4 +1,4 @@
-// Admin route for creating shop products
+// Admin routes for creating shop products
 
 const express = require('express');
 const router = express.Router();
