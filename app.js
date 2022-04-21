@@ -4,6 +4,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 
+// Gets project rootDirectory (Removes need for "__dirname")
+const rootDir = require('./helpers/path');
+
 // Include custom routers
 const adminRouter = require('./routes/admin');
 const shopRouter = require('./routes/shop');
@@ -20,6 +23,9 @@ app.use("/", (req, res, next) => {
 // Enable use of custom router routes
 app.use('/admin', adminRouter);
 app.use('/', shopRouter);
+
+// Add styles
+app.use(express.static(path.join(rootDir, 'public')));
 
 // 404 Page fallback handler
 app.use((req, res, next) => {
