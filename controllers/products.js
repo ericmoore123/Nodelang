@@ -1,6 +1,7 @@
 // Product logic controller file
 
-const products = [];
+// Import Product class model
+const Product = require("../Models/product");
 
 // Admin.js controller function
 exports.getAddProductPage = (req, res, next) => {
@@ -13,15 +14,17 @@ exports.getAddProductPage = (req, res, next) => {
 
 // Admin.js controller function
 exports.postAddProductPage = (req, res, next) => {
-  products.push({ title: req.body.title, description: req.body.description });
+  const product = new Product(req.body.title, req.body.description); // Save product as instance of Product Model
+  product.saveProduct(); // Call save function to add to array of saved products
+  //   products.push({ title: req.body.title, description: req.body.description });
   res.redirect("/"); // Auto rediredt page to url on req
 };
 
 // Shop.js controller function
 exports.getShopProductsPage = (req, res, next) => {
+  // Fetch all products from model
+  const products = Product.fetchAll();
   console.log("Available products: ", products);
-  // res.sendFile(path.join(rootDir, "views", "shop.html"));
-//   let products = adminData.products;
   res.render("shop", {
     pageTitle: "Shop",
     products: products,
