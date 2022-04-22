@@ -1,8 +1,14 @@
-
-
 <main>
-  <form action="/admin/add-product" method="POST">
-    <input type="text" name="title" />
-    <button type="submit">Add Product</button>
+  <form class="add-product-form" action="/admin/add-product" method="POST">
+  <h2 class="form-title">Admin - Add Product</h2>
+    <div class="input-group">
+      <label for="title">Name/Title:</label>
+      <input id="title" required="true" type="text" name="title" />
+    </div>
+    <div class="input-group">
+      <label for="description">Description:</label>
+      <textarea id="description" required="true" name="description" rows="3" cols="30"></textarea>      
+    </div>
+    <button class="submit-btn" type="submit">Add Product</button>
   </form>
 </main>

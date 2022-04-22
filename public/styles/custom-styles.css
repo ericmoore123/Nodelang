@@ -1,18 +1,20 @@
 body {
     padding: 0;
     margin: 0;
-    font-family: sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 main {
     padding: 1rem;
 }
 
+/* Nav and header styles */
 .main-header {
     width: 100%;
     height: 3.5rem;
-    background-color: #dbc441;
+    background-color: #d9d9d9;
     padding: 0 1.5rem;
+    box-shadow: 1px 1px 3px rgb(181, 181, 181);
 }
 
 .main-header__nav {
@@ -36,10 +38,74 @@ main {
 .main-header__item a {
     text-decoration: none;
     color: black;
+    font-size: 1.2rem;
 }
 
 .main-header__item a:hover,
 .main-header__item a:active,
 .main-header__item a.active {
-    color: #3e00a1;
+    color: #9c0000;
 }
+
+
+/* Add product admin page styles */
+.form-title{
+    color: #f54343;
+    
+}
+
+.add-product-form{
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25%;
+    margin: 0 auto;
+    background: rgb(230, 230, 230);
+    padding: 0 1rem;
+}
+
+
+.input-group{
+    margin: 10px 0;
+}
+
+.submit-btn{
+    border: 1px solid rgb(230, 230, 230);
+    width: 150px;
+    font-size: 18px;
+    background: #f54343;
+    color: white;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.4s ease-in-out;
+    margin: 10px auto 25px auto;
+    padding: 10px;
+}
+
+.submit-btn:hover{
+    color: #f54343;
+    background: white;
+    border: 1px solid #f54343;
+    cursor: pointer;
+}
+
+/* Shop page styles */
+.shop-grid{
+    margin: 0 auto;
+    width: 75%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: rgb(211, 211, 211);
+    padding: 10px;
+}
+
+.shop-card{
+    background: rgb(122, 122, 191);
+    margin: 10px;
+}
+
+.shop-card-title, .shop-card-description{
+
+}   
