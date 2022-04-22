@@ -1,4 +1,18 @@
 <main>
-  <h1>My Products</h1>
-  <p>List of all the products...</p>
+  <h1>Available Products</h1>
+  {{!-- Check if products exist, render accordingly --}}
+  {{#if haveProducts}} 
+  <div class="shop-grid">
+    {{#each products}}
+      <div class="shop-card">
+        <p class="shop-card-title">Title: {{this.title}}</p>
+        <p class="shop-card-description">Description: {{this.description}}</p>
+      </div>
+    {{/each}}
+  </div>
+  {{else}}
+    <div>
+      <h3>No products available...</h3>
+    </div>
+  {{/if}}
 </main>
